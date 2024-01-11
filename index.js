@@ -1,16 +1,33 @@
+//IMPORTS
 const express=require("express");
 const bodyParser=require("body-parser");
 const cors=require("cors");
 const morgan=require("morgan");
-
+const mongoose=require("mongoose")
+const dotenv=require("dotenv")
 const app=express();
 
+//NATIVE IMPORTS 
+const { sheduleController }=require("./controllers/shedules.controller")
+
+/* CONFIGURATIONS */
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
+dotenv.config();
 
+//routes
+app.get("/shedules", sheduleController.getShedules);
+app.get("/shedules/:id", sheduleController.getSingleShedule);
+app.post("/shedules", sheduleController.createShedule);
+app.patch("/shedules/:id", sheduleController.updateShedule);
+app.delete("/shedules/:id", sheduleController.deleteShedule);
 
-app.listen(3000, () => {
-    console.log("Listening on port 3001")
-})
+const PORT=process.env.PORT||6001;
 
+mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+        app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    })
+    .catch((error) => console.log(`${error} did not connect`));
