@@ -4,7 +4,17 @@ class sheduleController {
 
     getShedules=async (req, res) => {
         try {
-            const emailShedules=await EmailSheduleService.find();
+            let query={};
+            if (req.query.search) {
+                const searchRegex=new RegExp(req.query.search, 'i');
+                query={
+                    $or: [
+                        { title: { $regex: searchRegex } },
+                        { subject: { $regex: searchRegex } },
+                    ]
+                };
+            }
+            const emailShedules=await EmailSheduleService.find(query);
             res.status(200).json(emailShedules);
         } catch (error) {
             console.error("Error fetching schedules:", error);
