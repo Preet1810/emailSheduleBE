@@ -17,6 +17,9 @@ app.use(morgan("tiny"));
 dotenv.config();
 
 //routes
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
 app.get("/shedules", sheduleController.getShedules);
 app.get("/shedules/:id", sheduleController.getSingleShedule);
 app.post("/shedules", sheduleController.createShedule);
