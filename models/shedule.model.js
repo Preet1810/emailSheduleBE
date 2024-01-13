@@ -6,7 +6,7 @@ const EmailSheduleSchema=new mongoose.Schema({
     subject: String,
     frequency: String,
     repeat: String,
-    time: String
+    time: { type: Date }
 })
 
 module.exports.EmailShedule=mongoose.model("EmailShedule", EmailSheduleSchema)
