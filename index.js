@@ -22,6 +22,9 @@ app.get('/', (req, res) => {
 });
 
 app.get("/shedules", sheduleController.getShedules);
+app.get("/delusions", (req, res) => {
+    res.send("hey from delusion")
+})
 app.get("/shedules/:id", sheduleController.getSingleShedule);
 app.post("/shedules", sheduleController.createShedule);
 app.patch("/shedules/:id", sheduleController.updateShedule);
