@@ -17,7 +17,7 @@ jobs:
       - name: Tag docker image
         run: docker tag preet1810/emailshedulebe:latest ${{ secrets.DOCKER_USERNAME }}/emailshedulebe:latest
       - name: Publish image to docker hub
-        run: docker push preet1810/emailshedulebe:latest
+        run: docker push preetpal1810/emailsheduledockerhub:preet1810/emailshedulebe:latest
         
   deploy:
     needs: build
