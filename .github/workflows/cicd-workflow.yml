@@ -13,17 +13,17 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
       - name: Build docker image
-        run: docker build -t preet1810/emailSheduleBE .
+        run: docker build -t preet1810/emailshedulebe .
       - name: Publish image to docker hub
-        run: docker push preet1810/emailSheduleBE:latest
+        run: docker push preet1810/emailshedulebe:latest
         
   deploy:
     needs: build
     runs-on: [emailSheduleBE-awsec2-docker]
     steps:
       - name: Pull image from docker hub
-        run: docker pull preet1810/emailSheduleBE:latest
+        run: docker pull preet1810/emailshedulebe:latest
       - name: Delete old container
-        run: docker rm -f emailSheduleBE-container
+        run: docker rm -f emailshedulebe-container
       - name: Run docker container
-        run: docker run -d -p 3000:3000 --name emailSheduleBE-container preet1810/emailSheduleBE
+        run: docker run -d -p 3000:3000 --name emailshedulebe-container preet1810/emailshedulebe
