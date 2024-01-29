@@ -32,4 +32,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f emailshedulebe-container
       - name: Run docker container
-        run: docker run -d -p 3000:3000 --name emailshedulebe-container preet1810/emailshedulebe
+        run: docker run -d -p 3000:3000 --name emailshedulebe-container preetpal1810/emailshedulebe
