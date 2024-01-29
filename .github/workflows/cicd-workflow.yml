@@ -15,7 +15,7 @@ jobs:
       - name: Build docker image
         run: docker build -t preet1810/emailshedulebe .
       - name: Tag docker image
-        run: docker tag emailsheduledocker ${{ secrets.DOCKER_USERNAME }}/emailsheduledockerhub:emailsheduledocker
+        run: docker tag emailshedulebe ${{ secrets.DOCKER_USERNAME }}/emailsheduledockerhub:emailshedulebe
       - name: Publish image to docker hub
         run: docker push preet1810/emailshedulebe:latest
         
