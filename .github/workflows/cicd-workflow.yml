@@ -23,6 +23,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
+      - name: Run as root
+        run: sudo su
       - name: Pull image from docker hub
         run: docker pull preet1810/emailshedulebe:latest
       - name: Delete old container
