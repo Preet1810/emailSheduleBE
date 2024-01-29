@@ -30,7 +30,7 @@ app.post("/shedules", sheduleController.createShedule);
 app.patch("/shedules/:id", sheduleController.updateShedule);
 app.delete("/shedules/:id", sheduleController.deleteShedule);
 
-const PORT=process.env.PORT||6001;
+const PORT=3000
 
 mongoose
     .connect(process.env.MONGO_URL)
