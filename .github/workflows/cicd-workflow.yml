@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Run as root
         run: sudo su
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
       - name: Pull image from docker hub
         run: docker pull preet1810/emailshedulebe:latest
       - name: Delete old container
