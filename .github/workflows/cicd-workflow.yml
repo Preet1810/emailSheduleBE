@@ -21,7 +21,7 @@ jobs:
         
   deploy:
     needs: build
-    runs-on: [emailSheduleBE-awsec2-docker]
+    runs-on: self-hosted
     steps:
       - name: Pull image from docker hub
         run: docker pull preet1810/emailshedulebe:latest
