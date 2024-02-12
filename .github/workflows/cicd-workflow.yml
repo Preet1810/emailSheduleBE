@@ -13,9 +13,7 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
       - name: Build docker image
-        run: docker build -t preet1810/emailshedulebe .
-      - name: Tag docker image
-        run: docker tag preet1810/emailshedulebe:latest ${{ secrets.DOCKER_USERNAME }}/emailshedulebe:latest
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/emailshedulebe . #first is dockerhub repo name and then . indicates the repositry
       - name: Publish image to docker hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/emailshedulebe:latest
         
@@ -23,8 +21,6 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: Run as root
-        run: sudo su
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
       - name: Pull image from docker hub
